@@ -3,6 +3,7 @@
 #Date: march 26, 2026
 #Purpose: This code will ask the user if they would like
 # to see the instructions
+import random
 
 #Variables
 
@@ -28,6 +29,7 @@ def string_checker(question, valid_ans = ( "yes","no")):
         # print error if user does not enter valid answer
         print(error)
         print()
+
 #gives the instructions
 def instructions():
     """prints instructions"""
@@ -37,6 +39,7 @@ def instructions():
         To begin, choose the number of questions. 
         Then, .
          """)
+
 #Asks for the amount of questions
 def int_check(question):
     while True:
@@ -60,11 +63,23 @@ def int_check(question):
         except ValueError:
             print(error)
 
+#creates questions
+def q_generator():
+    num_one = random.randint(1, 20)
+    num_two = random.randint(1, 20)
+
+    q_generator = num_one + num_two
+    print(f"{num_one} + {num_two} = {q_generator}")
 
 #Main routine
-
 want_instructions = string_checker("Do you want the instructions?")
 #checks if user wants the instructions
 if want_instructions == "yes":
     instructions()
+#asks for number of questions
+q_number = int_check("How many rounds would you like? Push <enter> for infinite mode  ")
 
+if q_number == "infinte":
+    mode = "infinite"
+    q_number = 1
+    
