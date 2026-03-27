@@ -67,9 +67,8 @@ def int_check(question):
 def q_generator():
     num_one = random.randint(1, 20)
     num_two = random.randint(1, 20)
-
     q_generator = num_one + num_two
-    print(f"{num_one} + {num_two} = {q_generator}")
+    print(f"{num_one} + {num_two} =")
 
 #Main routine
 want_instructions = string_checker("Do you want the instructions?")
@@ -79,7 +78,6 @@ if want_instructions == "yes":
 #asks for number of questions
 q_number = int_check("How many rounds would you like? Push <enter> for infinite mode  ")
 
-if q_number == "infinte":
+if q_number == "infinite":
     mode = "infinite"
     q_number = 1
-    
