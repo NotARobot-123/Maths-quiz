@@ -9,7 +9,7 @@ import random
 
 #Check that users have entered a valid option based on list
 def string_checker(question, valid_ans = ( "yes","no")):
-    error = f"Please enter a valid option from the following list: {valid_ans}"
+    error = f"Please enter a valid option from the following list: yes, no"
 
     while True:
 
@@ -41,18 +41,18 @@ def instructions():
          """)
 
 #Asks for the amount of questions
-def int_check(question):
+def int_check():
     while True:
         error = "Please enter an integer that is 1 or more"
 
-        to_check = input(question)
+        to_check = (input(""))
 
         # check for infinite mode
-        if (to_check) == "":
+        if to_check == "":
             return "infinite"
 
         try:
-            response = int(to_check)
+            response = to_check
 
             #checks that the number is more than / equal to 1
             if response < 1:
@@ -63,21 +63,17 @@ def int_check(question):
         except ValueError:
             print(error)
 
-#creates questions
-def q_generator():
-    num_one = random.randint(1, 20)
-    num_two = random.randint(1, 20)
-    q_generator = num_one + num_two
-    print(f"{num_one} + {num_two} =")
-
 #Main routine
+mode = "regular"
+rounds_played = 0
+
+game_history = []
 want_instructions = string_checker("Do you want the instructions?")
+
 #checks if user wants the instructions
 if want_instructions == "yes":
     instructions()
-#asks for number of questions
-q_number = int_check("How many rounds would you like? Push <enter> for infinite mode  ")
 
-if q_number == "infinite":
-    mode = "infinite"
-    q_number = 1
+
+
+
