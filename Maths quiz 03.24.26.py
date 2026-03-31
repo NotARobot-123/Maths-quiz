@@ -73,6 +73,9 @@ rounds_played = 0
 
 game_history = []
 
+name = input("what is your name?: ")
+print(f" Welcome to math quiz {name}!")
+
 want_instructions = string_checker("Do you want the instructions?")
 
 # checks if user wants the instructions
@@ -80,14 +83,15 @@ if want_instructions == "yes":
     instructions()
 
 # ask user for number of rounds
-num_rounds = int_check("how many rounds? press enter for infinite mode")
+num_rounds = int_check("how many rounds? press enter for infinite mode. to exit infinite mode, press 0: ")
 
 if num_rounds == "infinite":
     mode = "infinite"
-    num_rounds = 5
+    num_rounds = 1
 
 # game loop starts here
 while rounds_played < num_rounds:
+
     # rounds headings
     if mode == "infinite":
         rounds_heading = f"\n()()() Round {rounds_played + 1} (infinite mode) ()()()"
@@ -97,5 +101,33 @@ while rounds_played < num_rounds:
     print(rounds_heading)
     print()
 
-    # Increment rounds_played
-    rounds_played += 1  # <--- Added this line
+
+
+
+while True:
+    score = 0
+    num_one = random.randint(1, 20)
+    num_two = random.randint(1, 20)
+    q_generator = num_one + num_two
+    print(f"{num_one} + {num_two} =")
+    user_input = int(input(""))
+    if user_input == q_generator:
+        print("correct")
+        score +=1
+    elif user_input == 0:
+        break
+    else:
+        print("wrong")
+
+history_item = f"Round: {rounds_played} - {score}"
+
+print(score)
+game_history.append(history_item)
+
+see_history = string_checker("\nDo you want to see your game history? ")
+if see_history == "yes":
+    for item in game_history:
+        print(item)
+
+
+
