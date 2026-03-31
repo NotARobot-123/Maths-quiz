@@ -41,18 +41,18 @@ def instructions():
          """)
 
 #Asks for the amount of questions
-def int_check():
+def int_check(question):
     while True:
         error = "Please enter an integer that is 1 or more"
 
-        to_check = (input(""))
+        to_check = input(question)
 
         # check for infinite mode
         if to_check == "":
             return "infinite"
 
         try:
-            response = to_check
+            response = int(to_check)
 
             #checks that the number is more than / equal to 1
             if response < 1:
@@ -68,11 +68,35 @@ mode = "regular"
 rounds_played = 0
 
 game_history = []
+
 want_instructions = string_checker("Do you want the instructions?")
 
 #checks if user wants the instructions
 if want_instructions == "yes":
     instructions()
+
+
+# ask user for number of rounds
+num_rounds = int_check("how many rounds? press enter for infinite mode")
+
+if num_rounds == "infinite":
+    mode = "infinite"
+    num_rounds = 5
+
+#game loop starts here
+while rounds_played < num_rounds:
+
+
+
+    #rounds headings
+    if mode == "infinite":
+        rounds_heading = f"\n()()() Round {rounds_played + 1} (infinite mode) ()()()"
+    else:
+        rounds_heading = f"\n [][][] Round {rounds_played + 1} of {num_rounds} [][][]"
+
+    print(rounds_heading)
+    print()
+
 
 
 
