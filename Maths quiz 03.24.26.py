@@ -1,14 +1,15 @@
-#Code name: Maths quiz string checker
-#By: Grayden Farrer
-#Date: march 26, 2026
-#Purpose: This code will ask the user if they would like
+# Code name: Maths quiz string checker
+# By: Grayden Farrer
+# Date: march 26, 2026
+# Purpose: This code will ask the user if they would like
 # to see the instructions
 import random
 
-#Variables
 
-#Check that users have entered a valid option based on list
-def string_checker(question, valid_ans = ( "yes","no")):
+# Variables
+
+# Check that users have entered a valid option based on list
+def string_checker(question, valid_ans=("yes", "no")):
     error = f"Please enter a valid option from the following list: yes, no"
 
     while True:
@@ -30,7 +31,8 @@ def string_checker(question, valid_ans = ( "yes","no")):
         print(error)
         print()
 
-#gives the instructions
+
+# gives the instructions
 def instructions():
     """prints instructions"""
     print("""
@@ -40,7 +42,8 @@ def instructions():
         Then, .
          """)
 
-#Asks for the amount of questions
+
+# Asks for the amount of questions
 def int_check(question):
     while True:
         error = "Please enter an integer that is 1 or more"
@@ -54,8 +57,8 @@ def int_check(question):
         try:
             response = int(to_check)
 
-            #checks that the number is more than / equal to 1
-            if response < 1:
+            # checks that the number is more than / equal to 1
+            if response < 1:  # Changed to < 1
                 print(error)
             else:
                 return response
@@ -63,7 +66,8 @@ def int_check(question):
         except ValueError:
             print(error)
 
-#Main routine
+
+# Main routine
 mode = "regular"
 rounds_played = 0
 
@@ -71,10 +75,9 @@ game_history = []
 
 want_instructions = string_checker("Do you want the instructions?")
 
-#checks if user wants the instructions
+# checks if user wants the instructions
 if want_instructions == "yes":
     instructions()
-
 
 # ask user for number of rounds
 num_rounds = int_check("how many rounds? press enter for infinite mode")
@@ -83,12 +86,9 @@ if num_rounds == "infinite":
     mode = "infinite"
     num_rounds = 5
 
-#game loop starts here
+# game loop starts here
 while rounds_played < num_rounds:
-
-
-
-    #rounds headings
+    # rounds headings
     if mode == "infinite":
         rounds_heading = f"\n()()() Round {rounds_played + 1} (infinite mode) ()()()"
     else:
@@ -97,7 +97,5 @@ while rounds_played < num_rounds:
     print(rounds_heading)
     print()
 
-
-
-
-
+    # Increment rounds_played
+    rounds_played += 1  # <--- Added this line
