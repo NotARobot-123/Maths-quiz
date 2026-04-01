@@ -103,8 +103,6 @@ while rounds_played < num_rounds:
 
 
 
-
-while True:
     score = 0
     num_one = random.randint(1, 20)
     num_two = random.randint(1, 20)
@@ -114,20 +112,21 @@ while True:
     if user_input == q_generator:
         print("correct")
         score +=1
-    elif user_input == 0:
+    elif user_input == 0 and mode == "infinite":
         break
+    elif user_input == input(""):
+        print("please enter your answer as a number.")
     else:
         print("wrong")
 
-history_item = f"Round: {rounds_played} - {score}"
+    history_item = f"Round: {rounds_played} - {score}"
 
-print(score)
-game_history.append(history_item)
+    print(score)
+    game_history.append(history_item)
 
 see_history = string_checker("\nDo you want to see your game history? ")
 if see_history == "yes":
     for item in game_history:
         print(item)
-
 
 
