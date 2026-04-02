@@ -71,6 +71,7 @@ def int_check(question):
 # Main routine
 mode = "regular"
 rounds_played = 0
+score = 0
 
 game_history = []
 
@@ -101,9 +102,8 @@ while rounds_played < num_rounds:
         print(rounds_heading)
         print()
 
-
     try:
-        score = 0
+
         num_one = random.randint(1, 20)
         num_two = random.randint(1, 20)
         q_generator = num_one + num_two
@@ -119,25 +119,23 @@ while rounds_played < num_rounds:
         history_item = f"Round: {rounds_played} - {round_feedback} - score: {score}"
 
 
+
         print(round_feedback)
         game_history.append(history_item)
 
 
-        game_win = user_input == rounds_played
-        game_lose = user_input != rounds_played
-
         if rounds_played > 0:
             #claculate statistics
-            game_lose = user_input != rounds_played
 
-            rounds_won = rounds_played - game_lose
-            percent_won = rounds_won / rounds_played * 100
-            percent_lost =  game_lose / rounds_played * 100
+            rounds_lost = rounds_played - score
+            percent_won = score / rounds_played * 100
+            percent_lost = rounds_lost / rounds_played * 100
+
 
             # output game stats
             print(" game statistics")
-            print(f"won: {percent_won:.2f} \t ")
-            print(f"lost: {percent_lost:.2f} \t")
+            print(f" Won: {percent_won:.2f}%")
+            print(f" Lost: {percent_lost:.2f}%")
 
     except ValueError:
         print("please enter value as a number")
